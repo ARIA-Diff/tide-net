@@ -1,0 +1,8 @@
+full: {}
+a_no_tpp_loss:            {lambda_tpp: 0.0, use_tpp_loss: false}
+b_no_iiw:                 {use_iiw: false}
+c_no_process_view:        {use_process_view: false}
+d_hard_labels:            {soft_label: false}
+e_no_heteroscedastic:     {loss_reg: mse}
+f_no_hidden_decay:        {hidden_decay: false}
+g_raw_delta:              {time_embedding: raw}

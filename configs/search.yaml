@@ -1,0 +1,19 @@
+n_configs: 40
+seed: 123
+tidenet:
+  hidden: [64, 128, 256]
+  d_t: [8, 16]
+  lambda_reg: [0.1, 0.3, 1.0]
+  lambda_tpp: [0.01, 0.1, 0.3]
+  dropout: [0.1, 0.2, 0.3]
+baselines_deep:
+  hidden: [64, 128, 256]
+  d_t: [8, 16]
+  lambda_reg: [0.1, 0.3, 1.0]
+  dropout: [0.1, 0.2, 0.3]
+lightgbm:
+  num_leaves: [15, 31, 63]
+  learning_rate: [0.02, 0.05, 0.1]
+  min_child_samples: [20, 50, 100]
+  feature_fraction: [0.5, 0.7, 0.9]
+  lambda_l2: [0.0, 1.0, 10.0]

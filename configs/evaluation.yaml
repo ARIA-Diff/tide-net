@@ -1,0 +1,8 @@
+n_bootstrap: 1000
+ece_bins: 10
+sens_at_specificity: 0.90
+dca_thresholds: {start: 0.05, stop: 0.40, step: 0.01}
+ppv_top_fraction: 0.10
+interval_z: 1.96
+subgroups: [visit_tertile, g_stage, diabetes, sex, age_group]
+delong_one_landmark_per_patient: true

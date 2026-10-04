@@ -1,0 +1,68 @@
+experiment:
+  outcome: slope5
+  split: random
+  seeds: [0, 1, 2, 3, 4]
+  output_dir: outputs/runs
+  device: cuda
+  num_workers: 0
+  include_death_positive: false
+
+input:
+  max_visits: 256
+  log_vars: [creatinine, bun, wbc, glucose, hba1c, uric_acid, urine_protein, acr]
+
+optim:
+  lr: 1.0e-3
+  weight_decay: 1.0e-4
+  batch_size: 128
+  landmarks_per_patient: 8
+  max_epochs: 100
+  patience: 10
+  grad_clip: 1.0
+  cosine_decay: true
+
+tidenet:
+  hidden: 128
+  d_t: 16
+  layers: 2
+  dropout: 0.2
+  lambda_reg: 0.3
+  lambda_tpp: 0.1
+  iiw_clip: [0.1, 10.0]
+  iiw_eps: 1.0e-6
+  w_min: 1.0e-3
+  eed_grid_max_months: 120.0
+  eed_grid_points: 256
+  use_tpp_loss: true
+  use_iiw: true
+  use_process_view: true
+  soft_label: true
+  loss_reg: hetero
+  hidden_decay: true
+  time_embedding: t2v
+
+baselines_deep:
+  hidden: 128
+  d_t: 16
+  layers: 2
+  dropout: 0.2
+  lambda_reg: 0.3
+  heads: 4
+  n_ref_points: 32
+  ode_steps: 2
+  strats_max_triplets: 256
+  strats_layers: 2
+
+lightgbm:
+  n_estimators: 2000
+  early_stopping_rounds: 50
+  defaults: {num_leaves: 31, learning_rate: 0.05, min_child_samples: 50, feature_fraction: 0.7, lambda_l2: 1.0}
+logistic:
+  C_grid: [0.01, 0.1, 1.0, 10.0]
+kfre:
+  baseline_survival: 0.9750
+  centering: {age10: 7.036, male: 0.5642, egfr5: 7.222, ln_acr: 5.137}
+  coef: {age10: -0.2201, male: 0.2467, egfr5: -0.5567, ln_acr: 0.4510}
+  impute_acr: median
+lmm:
+  max_iter: 200

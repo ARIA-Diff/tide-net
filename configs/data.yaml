@@ -1,0 +1,36 @@
+paths:
+  mimic_dir: data/mimic-iv-3.1
+  out_dir: outputs/cohort
+  use_chartevents: true
+
+cohort:
+  anchor_year_groups: ["2008 - 2010", "2011 - 2013", "2014 - 2016", "2017 - 2019"]
+  min_age: 18
+  creatinine_itemid: 50912
+  creatinine_range: [0.2, 20.0]
+  ckd_egfr_threshold: 60.0
+  ckd_confirm_days: 90
+  obs_window_days: 1826
+  out_window_days: 730
+  min_hist_values: 2
+  min_hist_span_days: 183
+  landmark_egfr_range: [15.0, 90.0]
+  min_out_values: 3
+  min_out_span_days: 365
+  min_instance_gap_days: 90
+  kf_egfr: 15.0
+  rel_decline: 0.30
+  rel_decline_confirm_days: 90
+  lab_tolerance_days: 30
+  med_washout_days: 180
+
+outcomes:
+  slope5: -5.0
+  slope3: -3.0
+
+splits:
+  split_seed: 0
+  random: {train: 0.70, val: 0.15, test: 0.15}
+  temporal_train_groups: ["2008 - 2010", "2011 - 2013", "2014 - 2016"]
+  temporal_test_groups: ["2017 - 2019"]
+  temporal_val_fraction: 0.15

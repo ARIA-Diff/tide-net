@@ -1,0 +1,23 @@
+output_dir: outputs/semisyn
+seed: 2024
+alphas: [0.0, 0.5, 1.0, 2.0]
+alpha2: 0.5
+egfr_cutoff: 45.0
+train_alphas: [2.0, 0.0]
+rate_multipliers: [1.0, 0.5]
+lmm_max_iter: 200
+eval_label: y_star
+models:
+  - lightgbm
+  - lightgbm_novisit
+  - tlstm
+  - grud
+  - mtan
+  - odernn
+  - strats
+  - strats_sl
+  - tidenet
+  - tidenet_noproc
+soft_label_study:
+  alpha: 2.0
+  models: [tidenet]
